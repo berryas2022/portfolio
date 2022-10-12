@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="dist/output.css">
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
 </head>
 <body>
 
@@ -22,22 +29,37 @@
                         <span class="burger-line transition duration-300 ease-in-out"></span>
                         <span class="burger-line transition duration-300 ease-in-out origin-bottom-left"></span>
                     </button>
-                    <nav id="nav-menu" class="hidden absolute p-4 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-2 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
+                    <nav id="nav-menu" class="hidden absolute p-4 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-2 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none dark:bg-dark dark:shadow-slate-500">
                         <ul class="block lg:flex ">
                             <li class="group">
-                                <a href="#home" class="text-base text-dark py-2 mx-8 flex group-hover:text-primary">Beranda</a>
+                                <a href="#home" class="text-base text-dark py-2 flex lg:mx-5  group-hover:text-primary dark:text-white">Beranda</a>
                             </li>
                             <li class="group">
-                                <a href="#about" class="text-base text-dark py-2 mx-8 flex group-hover:text-primary">Tentang Saya</a>
+                                <a href="#about" class="text-base text-dark py-2 flex lg:mx-5  group-hover:text-primary dark:text-white">Tentang Saya</a>
                             </li>
                             <li class="group">
-                                <a href="#portfolio" class="text-base text-dark py-2 mx-8 flex group-hover:text-primary">Portfolio</a>
+                                <a href="#portfolio" class="text-base text-dark py-2 flex lg:mx-5  group-hover:text-primary dark:text-white">Portfolio</a>
                             </li>
                             <li class="group">
-                                <a href="#blog" class="text-base text-dark py-2 mx-8 flex group-hover:text-primary">Blog</a>
+                                <a href="#clients" class="text-base text-dark py-2 flex lg:mx-5  group-hover:text-primary dark:text-white">Clients</a>
                             </li>
                             <li class="group">
-                                <a href="#contact" class="text-base text-dark py-2 mx-8 flex group-hover:text-primary">Contact</a>
+                                <a href="#blog" class="text-base text-dark py-2 flex lg:mx-5  group-hover:text-primary dark:text-white">Blog</a>
+                            </li>
+                            <li class="group">
+                                <a href="#contact" class="text-base text-dark py-2 flex lg:mx-5  group-hover:text-primary dark:text-white">Contact</a>
+                            </li>
+                            <li class="group flex items-center">
+                                <div class="flex items-center">
+                                    <span class="text-dark text-base dark:text-white">light</span>
+                                    <input type="checkbox" class="hidden" id="dark-toggle">
+                                    <label for="dark-toggle" class="mx-1">
+                                        <div class="flex items-center cursor-pointer h-5 w-9 rounded-full bg-slate-500 p-1">
+                                            <div class="toggle-circle h-4 w-4 bg-white rounded-full transition duration-1000 ease-in-out"></div>
+                                        </div>
+                                    </label>
+                                    <span class="text-dark text-base dark:text-white">dark</span>
+                                </div>
                             </li>
                         </ul>
                     </nav>
@@ -47,18 +69,18 @@
     </header>
     <!-- header end -->
     <!-- hero section start -->
-    <section id="home" class="pt-36">
+    <section id="home" class="pt-36 dark:bg-dark">
         <div class="container">
             <div class="flex flex-wrap">
                 <div class="w-full self-center px-4 lg:w-1/2">
                     <h1 class="text-base font-semibold text-primary md:text-lg">Halo semua 🙌, saya 
-                        <span id="nama-saya" class="block font-bold text-dark text-3xl mt-5 lg:text-5xl">
+                        <span id="nama-saya" class="block font-bold text-dark text-3xl mt-5 lg:text-5xl dark:text-white">
                             Berry Akbar Sukmantono
                         </span>
                     </h1>
                     <h2 class="font-medium text-slate-500 text-lg mb-10 lg:text-2xl">
                         Full Stack Web Developer & 
-                        <span class="text-dark">
+                        <span class="text-dark dark:text-white">
                             Content Creator
                         </span>
                     </h2>
@@ -72,8 +94,8 @@
                 </div>
                 <div class="w-full self-end px-4 lg:w-1/2">
                     <div class="relative mt-10 lg:mt-0 lg:right-0">
-                        <img src="dist/img/berry.png" alt="berry akbar" class="max-w-full mx-auto" />
-                        <span class="absolute -bottom-5 -z-10 left-1/2 -translate-x-1/2 md:scale-125">
+                        <img src="dist/img/berry.png" alt="berry akbar" class="relative z-10 max-w-full mx-auto" />
+                        <span class="absolute -bottom-5 left-1/2 -translate-x-1/2 md:scale-125">
                               <svg  width="400" height="400" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                                 <path fill="#10B981" d="M36.9,-48.7C47.6,-34.9,55.9,-23.1,60.7,-8.8C65.6,5.5,66.8,22.4,60.6,36.6C54.3,50.7,40.6,62.2,25.4,66.1C10.2,70.1,-6.4,66.5,-24.6,62.2C-42.9,57.9,-62.8,52.8,-70.9,40.2C-79.1,27.6,-75.4,7.5,-69.2,-9.6C-63.1,-26.6,-54.4,-40.6,-42.4,-54.1C-30.5,-67.5,-15.2,-80.6,-1.1,-79.3C13.1,-78,26.2,-62.4,36.9,-48.7Z" transform="translate(100 100)" />
                               </svg>
@@ -85,16 +107,16 @@
     </section>
     <!-- hero section end -->
     <!-- about section start -->
-    <section id="about" class="mt-28 mb-24">
+    <section id="about" class="py-28 dark:bg-dark">
         <div class="container">
             <div class="flex flex-wrap">
                 <div class="w-full px-4 mb-3 lg:w-1/2">
                     <h1 class="uppercase text-primary font-bold mb-2">Tentang Saya</h1>
-                    <h2 class="font-medium text-dark text-2xl mb-5">Disiplin & Konsisten</h2>
+                    <h2 class="font-medium text-dark text-2xl mb-5 dark:text-white">Disiplin & Konsisten</h2>
                     <p class="text-slate-500">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptates iste unde perspiciatis quos blanditiis harum tempore similique in nostrum eum distinctio velit molestiae, provident beatae animi eaque adipisci rerum.</p>
                 </div>
                 <div class="w-full px-4 mb-3 lg:w-1/2">
-                    <h2 class="font-medium text-dark text-2xl mb-5 lg:mt-8">Mari Berteman</h2>
+                    <h2 class="font-medium text-dark text-2xl mb-5 lg:mt-8 dark:text-white">Mari Berteman</h2>
                     <p class="text-slate-500">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum earum facere ipsam neque autem, repellat quia deserunt tempore doloribus nihil. Facilis eum ducimus corporis? Tenetur aliquam molestias ea ullam hic?</p>
                     <div class="flex mt-3">
                         <a href="https://www.youtube.com/channel/UCNHlBG3jK-mfzF_0KeUOhhw/featured" target="_blank" class="h-9 w-9 mr-3 rounded-full flex justify-center items-center text-slate-500 border-slate-300 border hover:text-white hover:bg-primary hover:border-white">
@@ -113,11 +135,11 @@
     </section>
     <!-- about section end -->
     <!-- portfolio start -->
-    <section id="portfolio" class="mt-20 bg-slate-200 py-20">
+    <section id="portfolio" class="bg-slate-200 py-28 dark:bg-slate-800">
         <div class="container lg:px-40">
             <div class="text-center mb-10">
                 <h1 class="text-primary font-semibold mb-2 uppercase">Portfolio</h1>
-                <h3 class="text-dark font-bold text-2xl mb-2 uppercase">Project Terbaru</h3>
+                <h3 class="text-dark font-bold text-2xl mb-2 uppercase dark:text-white">Project Terbaru</h3>
                 <p class="text-slate-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus iure nihil quam.</p>
             </div>
             <div class="flex flex-wrap justify-center">
@@ -125,29 +147,29 @@
                     <div class="rounded-xl overflow-hidden shadow-lg mb-2">
                         <img src="dist/img/portfolio/2.PNG" alt="" class="object-cover h-64 w-full">
                     </div>
-                    <h3 class="font-semibold">Sistem Transaksi PT Mahadesa GNE</h3>
-                    <p class="text-medium text-slate-500">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum, sapiente! Maiores, similique!</p>
+                    <h3 class="font-semibold dark:text-white">Sistem Pelaporan Cleaning Service PT Sumber Mitra Binugan</h3>
+                    <p class="text-medium text-slate-500">Sistem dibangun dengan tujuan mempermudah serta mempercepat proses plaporan kegiatan claening services.</p>
                 </div>
                 <div class="w-full p-4 lg:w-1/2">
                     <div class="rounded-xl overflow-hidden shadow-lg mb-2">
                         <img src="dist/img/portfolio/3.PNG" alt="" class="object-cover h-64 w-full">
                     </div>
-                    <h3 class="font-semibold">Sistem Transaksi PT Mahadesa GNE</h3>
-                    <p class="text-medium text-slate-500">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum, sapiente! Maiores, similique!</p>
+                    <h3 class="font-semibold dark:text-white">Sistem Presensi Staff TDC PT Mahadesa GNE</h3>
+                    <p class="text-medium text-slate-500">Sistem presensi yang dibangun untuk memudahkan monitoring staff tdc, dengan melakukan proses absensi secara rutin di sistem</p>
                 </div>
                 <div class="w-full p-4 lg:w-1/2">
                     <div class="rounded-xl overflow-hidden shadow-lg mb-2">
                         <img src="dist/img/portfolio/4.PNG" alt="" class="object-cover h-64 w-full">
                     </div>
-                    <h3 class="font-semibold">Sistem Transaksi PT Mahadesa GNE</h3>
-                    <p class="text-medium text-slate-500">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum, sapiente! Maiores, similique!</p>
+                    <h3 class="font-semibold dark:text-white">Website PT Mahadesa GNE</h3>
+                    <p class="text-medium text-slate-500">Website dibangun dengan menggunakan framework laravel serta bootstrap memudahkan menyebarkan informasi tenteng PT Mahadesa GNE kepada publik</p>
                 </div>
                 <div class="w-full p-4 lg:w-1/2">
                     <div class="rounded-xl overflow-hidden shadow-lg mb-2">
                         <img src="dist/img/portfolio/1.PNG" alt="" class="object-cover h-64 w-full">
                     </div>
-                    <h3 class="font-semibold">Sistem Transaksi PT Mahadesa GNE</h3>
-                    <p class="text-medium text-slate-500">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum, sapiente! Maiores, similique!</p>
+                    <h3 class="font-semibold dark:text-white">Sistem Transaksi PT Mahadesa GNE</h3>
+                    <p class="text-medium text-slate-500">Sistem berbasis web yang mencakup kegiatan transaksi, perpindahan stock, serta laporan keuang di PT Mahadesa GNE</p>
                 </div>
                 
             </div>
@@ -155,7 +177,7 @@
     </section>
     <!-- portfolio end -->
     <!-- clients section start -->
-    <section id="clients" class="bg-slate-800 pt-20 pb-16">
+    <section id="clients" class="bg-slate-800 py-28 dark:bg-slate-700">
         <div class="container">
             <div class="text-center mb-10">
                 <h1 class="text-primary font-semibold mb-2 uppercase">Cliens</h1>
@@ -164,115 +186,55 @@
             </div>
             <div class="w-full flex flex-wrap px-4 items-center justify-center">
                 <a href="#" class="max-w-[120px] mx-4 py-4 grayscale opacity-60 transition duration-1000 hover:opacity-100 hover:grayscale-0">
-                    <img src="dist/img/clients/google.svg" alt="google">
+                    <img src="dist/img/clients/mahadesa.svg" alt="mahadesa">
                 </a>
                 <a href="#" class="max-w-[120px] mx-4 py-4 grayscale opacity-60 transition duration-1000 hover:opacity-100 hover:grayscale-0">
-                    <img src="dist/img/clients/google.svg" alt="tokopedia">
+                    <img src="dist/img/clients/smb.svg" alt="smb">
                 </a>
-                <a href="#" class="max-w-[120px] mx-4 py-4 grayscale opacity-60 transition duration-1000 hover:opacity-100 hover:grayscale-0">
+                <!-- <a href="#" class="max-w-[120px] mx-4 py-4 grayscale opacity-60 transition duration-1000 hover:opacity-100 hover:grayscale-0">
                     <img src="dist/img/clients/google.svg" alt="gojek">
                 </a>
                 <a href="#" class="max-w-[120px] mx-4 py-4 grayscale opacity-60 transition duration-1000 hover:opacity-100 hover:grayscale-0">
                     <img src="dist/img/clients/google.svg" alt="adobe">
-                </a>
+                </a> -->
             </div>
         </div>
     </section>
     <!-- clients section end -->
     <!-- blog section start -->
-    <section id="blog" class="bg-slate-200 py-20">
+    <section id="blog" class="bg-slate-200 py-28 dark:bg-dark">
         <div class="container lg:px-40">
             <div class="text-center mb-10">
                 <h1 class="text-primary font-semibold mb-2 uppercase">Blog</h1>
-                <h3 class="text-dark font-bold text-2xl mb-2 uppercase">Artikel Terkini</h3>
+                <h3 class="text-dark font-bold text-2xl mb-2 uppercase dark:text-white">Artikel Terkini</h3>
                 <p class="text-slate-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus iure nihil quam.</p>
             </div>
             <div class="flex flex-wrap justify-center">
-                <div class="w-full p-4 lg:w-1/3 md:w-1/2">
-                    <div class="w-full shadow-lg rounded-lg overflow-hidden">
+                <div class="w-full p-4 lg:w-1/3 md:w-1/2 ">
+                    <div class="w-full shadow-lg rounded-lg overflow-hidden dark:shadow-slate-500">
                         <img src="dist/img/blogs/react.png" alt="" class="object-cover h-64 w-full overflow-hidden">
-                        <div class="p-4 bg-white">
-                            <h3 class="font-semibold text-xl text-dark hover:text-primary truncate mb-2"><a href="#">React menjadi teknologi paling menarik bagi programmer</a></h3>
+                        <div class="p-4 bg-white dark:bg-dark">
+                            <h3 class="font-semibold text-xl text-dark dark:text-white hover:text-primary truncate mb-2"><a href="#">React menjadi teknologi paling menarik bagi programmer</a></h3>
                             <p class="font-normal text-slate-500 text-sm mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, mollitia veniam ipsam totam accusamus vel quidem tempora. Enim minus est facere iste harum error sed! Ratione aliquam ex quo dolorem!</p>
                             <a href="#" class="bg-primary px-4 py-1 rounded-lg text-white hover:opacity-80">Selengkapnya</a>
                         </div>
                     </div>
                 </div>
-                <div class="w-full p-4 lg:w-1/3 md:w-1/2">
-                    <div class="w-full shadow-lg rounded-lg overflow-hidden">
+                <div class="w-full p-4 lg:w-1/3 md:w-1/2 ">
+                    <div class="w-full shadow-lg rounded-lg overflow-hidden dark:shadow-slate-500">
                         <img src="dist/img/blogs/react.png" alt="" class="object-cover h-64 w-full overflow-hidden">
-                        <div class="p-4 bg-white">
-                            <h3 class="font-semibold text-xl text-dark hover:text-primary truncate mb-2"><a href="#">React menjadi teknologi paling menarik bagi programmer</a></h3>
+                        <div class="p-4 bg-white dark:bg-dark">
+                            <h3 class="font-semibold text-xl text-dark dark:text-white hover:text-primary truncate mb-2"><a href="#">React menjadi teknologi paling menarik bagi programmer</a></h3>
                             <p class="font-normal text-slate-500 text-sm mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, mollitia veniam ipsam totam accusamus vel quidem tempora. Enim minus est facere iste harum error sed! Ratione aliquam ex quo dolorem!</p>
                             <a href="#" class="bg-primary px-4 py-1 rounded-lg text-white hover:opacity-80">Selengkapnya</a>
                         </div>
                     </div>
                 </div>
-                <div class="w-full p-4 lg:w-1/3 md:w-1/2">
-                    <div class="w-full shadow-lg rounded-lg overflow-hidden">
+                <div class="w-full p-4 lg:w-1/3 md:w-1/2 ">
+                    <div class="w-full shadow-lg rounded-lg overflow-hidden dark:shadow-slate-500">
                         <img src="dist/img/blogs/react.png" alt="" class="object-cover h-64 w-full overflow-hidden">
-                        <div class="p-4 bg-white">
-                            <h3 class="font-semibold text-xl text-dark hover:text-primary truncate mb-2"><a href="#">React menjadi teknologi paling menarik bagi programmer</a></h3>
-                            <p class="font-normal text-slate-500 text-sm mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, mollitia veniam ipsam totam accusamus vel quidem tempora. Enim minus est facere iste harum error sed! Ratione aliquam ex quo dolorem!</p>
-                            <a href="#" class="bg-primary px-4 py-1 rounded-lg text-white hover:opacity-80">Selengkapnya</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full p-4 lg:w-1/3 md:w-1/2">
-                    <div class="w-full shadow-lg rounded-lg overflow-hidden">
-                        <img src="dist/img/blogs/react.png" alt="" class="object-cover h-64 w-full overflow-hidden">
-                        <div class="p-4 bg-white">
-                            <h3 class="font-semibold text-xl text-dark hover:text-primary truncate mb-2"><a href="#">React menjadi teknologi paling menarik bagi programmer</a></h3>
-                            <p class="font-normal text-slate-500 text-sm mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, mollitia veniam ipsam totam accusamus vel quidem tempora. Enim minus est facere iste harum error sed! Ratione aliquam ex quo dolorem!</p>
-                            <a href="#" class="bg-primary px-4 py-1 rounded-lg text-white hover:opacity-80">Selengkapnya</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full p-4 lg:w-1/3 md:w-1/2">
-                    <div class="w-full shadow-lg rounded-lg overflow-hidden">
-                        <img src="dist/img/blogs/react.png" alt="" class="object-cover h-64 w-full overflow-hidden">
-                        <div class="p-4 bg-white">
-                            <h3 class="font-semibold text-xl text-dark hover:text-primary truncate mb-2"><a href="#">React menjadi teknologi paling menarik bagi programmer</a></h3>
-                            <p class="font-normal text-slate-500 text-sm mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, mollitia veniam ipsam totam accusamus vel quidem tempora. Enim minus est facere iste harum error sed! Ratione aliquam ex quo dolorem!</p>
-                            <a href="#" class="bg-primary px-4 py-1 rounded-lg text-white hover:opacity-80">Selengkapnya</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full p-4 lg:w-1/3 md:w-1/2">
-                    <div class="w-full shadow-lg rounded-lg overflow-hidden">
-                        <img src="dist/img/blogs/react.png" alt="" class="object-cover h-64 w-full overflow-hidden">
-                        <div class="p-4 bg-white">
-                            <h3 class="font-semibold text-xl text-dark hover:text-primary truncate mb-2"><a href="#">React menjadi teknologi paling menarik bagi programmer</a></h3>
-                            <p class="font-normal text-slate-500 text-sm mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, mollitia veniam ipsam totam accusamus vel quidem tempora. Enim minus est facere iste harum error sed! Ratione aliquam ex quo dolorem!</p>
-                            <a href="#" class="bg-primary px-4 py-1 rounded-lg text-white hover:opacity-80">Selengkapnya</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full p-4 lg:w-1/3 md:w-1/2">
-                    <div class="w-full shadow-lg rounded-lg overflow-hidden">
-                        <img src="dist/img/blogs/react.png" alt="" class="object-cover h-64 w-full overflow-hidden">
-                        <div class="p-4 bg-white">
-                            <h3 class="font-semibold text-xl text-dark hover:text-primary truncate mb-2"><a href="#">React menjadi teknologi paling menarik bagi programmer</a></h3>
-                            <p class="font-normal text-slate-500 text-sm mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, mollitia veniam ipsam totam accusamus vel quidem tempora. Enim minus est facere iste harum error sed! Ratione aliquam ex quo dolorem!</p>
-                            <a href="#" class="bg-primary px-4 py-1 rounded-lg text-white hover:opacity-80">Selengkapnya</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full p-4 lg:w-1/3 md:w-1/2">
-                    <div class="w-full shadow-lg rounded-lg overflow-hidden">
-                        <img src="dist/img/blogs/react.png" alt="" class="object-cover h-64 w-full overflow-hidden">
-                        <div class="p-4 bg-white">
-                            <h3 class="font-semibold text-xl text-dark hover:text-primary truncate mb-2"><a href="#">React menjadi teknologi paling menarik bagi programmer</a></h3>
-                            <p class="font-normal text-slate-500 text-sm mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, mollitia veniam ipsam totam accusamus vel quidem tempora. Enim minus est facere iste harum error sed! Ratione aliquam ex quo dolorem!</p>
-                            <a href="#" class="bg-primary px-4 py-1 rounded-lg text-white hover:opacity-80">Selengkapnya</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full p-4 lg:w-1/3 md:w-1/2">
-                    <div class="w-full shadow-lg rounded-lg overflow-hidden">
-                        <img src="dist/img/blogs/react.png" alt="" class="object-cover h-64 w-full overflow-hidden">
-                        <div class="p-4 bg-white">
-                            <h3 class="font-semibold text-xl text-dark hover:text-primary truncate mb-2"><a href="#">React menjadi teknologi paling menarik bagi programmer</a></h3>
+                        <div class="p-4 bg-white dark:bg-dark">
+                            <h3 class="font-semibold text-xl text-dark dark:text-white hover:text-primary truncate mb-2"><a href="#">React menjadi teknologi paling menarik bagi programmer</a></h3>
                             <p class="font-normal text-slate-500 text-sm mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, mollitia veniam ipsam totam accusamus vel quidem tempora. Enim minus est facere iste harum error sed! Ratione aliquam ex quo dolorem!</p>
                             <a href="#" class="bg-primary px-4 py-1 rounded-lg text-white hover:opacity-80">Selengkapnya</a>
                         </div>
@@ -283,11 +245,11 @@
     </section>
     <!-- blog section end -->
     <!-- contact section start -->
-    <section id="contact" class="bg-slate-200 py-20">
+    <section id="contact" class="bg-slate-200 py-28 dark:bg-slate-700">
         <div class="container lg:px-40">
             <div class="text-center mb-10">
                 <h1 class="text-primary font-semibold mb-2 uppercase">Contact</h1>
-                <h3 class="text-dark font-bold text-2xl mb-2 uppercase">Hubungi Kami</h3>
+                <h3 class="text-dark font-bold text-2xl mb-2 uppercase dark:text-white">Hubungi Kami</h3>
                 <p class="text-slate-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus iure nihil quam.</p>
             </div>
             <form>
@@ -319,6 +281,11 @@
         </div>
     </footer>
     <!-- footer end -->
+    <!-- back to top -->
+    <a href="#home" id="btt" class="hidden justify-center items-center fixed right-10 bottom-10 w-10 h-10 bg-primary rounded-full">
+        <span class="w-4 h-4 border-t-2 border-l-2 rotate-45 mt-1"></span>
+    </a>
+    <!-- back to top end -->
     <script src="https://unpkg.com/typeit@8.7.0/dist/index.umd.js"></script>
     <script src="dist/js/script.js"></script>
     <script>
